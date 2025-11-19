@@ -1,6 +1,5 @@
-package org.example.mappers;
+package org.example.mappers.auth;
 
-import org.example.dto.auth.LoginRequest;
 import org.example.dto.auth.RegisterRequest;
 import org.example.entities.Client;
 

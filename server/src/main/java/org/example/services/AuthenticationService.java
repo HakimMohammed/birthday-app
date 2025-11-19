@@ -11,9 +11,8 @@ import org.example.dto.auth.LoginRequest;
 import org.example.dto.auth.RegisterRequest;
 import org.example.dto.client.SecureClientDTO;
 import org.example.entities.Client;
-import org.example.mappers.ClientMapper;
-import org.example.mappers.RequestMapper;
-import org.example.mappers.SecureMapper;
+import org.example.mappers.auth.RequestMapper;
+import org.example.mappers.client.SecureMapper;
 import org.example.repositories.ClientRepository;
 import java.util.Set;
 

@@ -2,8 +2,8 @@ package org.example.repositories;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
-import org.example.entities.Client;
+import org.example.entities.Friend;
 
 @ApplicationScoped
-public class ClientRepository implements PanacheRepository<Client> {
+public class FriendRepository implements PanacheRepository<Friend> {
 }

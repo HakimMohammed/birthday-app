@@ -1,6 +1,5 @@
-package org.example.mappers;
+package org.example.mappers.client;
 
-import org.example.dto.client.ClientDetailsDTO;
 import org.example.dto.client.SecureClientDTO;
 import org.example.entities.Client;
 
