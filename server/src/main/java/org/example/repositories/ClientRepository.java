@@ -6,4 +6,5 @@ import org.example.entities.Client;
 
 @ApplicationScoped
 public class ClientRepository implements PanacheRepository<Client> {
+
 }
