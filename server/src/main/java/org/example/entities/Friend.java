@@ -1,19 +1,22 @@
 package org.example.entities;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
 @Entity
 public class Friend extends PanacheEntity {
+
+    @Column(nullable = false)
     public String firstName;
+
+    @Column(nullable = false)
     public String lastName;
+
+    @Column(nullable = false)
     public Date birthDate;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    public User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    public Client client;
 }
