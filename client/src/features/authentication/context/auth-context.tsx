@@ -25,9 +25,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             const hasToken = authService.isAuthenticated();
             if (hasToken) {
                 setIsAuthenticated(true);
-                // OPTIONAL: Ideally, you would fetch the user profile here
-                // await api.get('/auth/me').then(setUser)...
-                // For this demo, we assume if token exists, we are auth'd.
             }
             setIsLoading(false);
         };
@@ -62,7 +59,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, isAuthenticated, isLoading, login, logout }}>
+        <AuthContext.Provider value={{ user, isAuthenticated, isLoading, login, register, logout }}>
             {children}
         </AuthContext.Provider>
     );

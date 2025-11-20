@@ -38,7 +38,7 @@ public class FriendResource {
 
     @GET
     public List<Friend> getAll() {
-        return friendRepository.listAll();
+        return friendRepository.findByClientId(userId);
     }
 
     @GET
