@@ -4,7 +4,6 @@ import type {CalendarEvent} from "@/components/calendar/calendar-types.ts";
 import {friendService} from "@/features/home/services/friend-service.ts"; // Import the friend service
 import type {Friend} from "@/features/home/models/friend.ts"; // Import the Friend type
 
-const BIRTHDAY_COLOR = colorOptions[0].value;
 const NUM_YEARS_TO_PROJECT = 5;
 
 export async function generateFriendBirthdayEvents(): Promise<CalendarEvent[]> {
@@ -35,7 +34,7 @@ export async function generateFriendBirthdayEvents(): Promise<CalendarEvent[]> {
                 allEvents.push({
                     id: uniqueId,
                     title: title,
-                    color: BIRTHDAY_COLOR,
+                    color: colorOptions[Math.floor(Math.random() * 7)].value,
                     start: start,
                     end: end,
                 });

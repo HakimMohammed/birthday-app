@@ -8,8 +8,8 @@ import {Modal} from "@/features/home/components/modal.tsx";
 export default function Home() {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-
     const {logout} = useAuth();
+    const [refresh, setRefresh] = useState(false);
 
 
     return (
@@ -54,11 +54,17 @@ export default function Home() {
             </nav>
 
             <div className="min-w-[100vh] m-20">
-                <CalendarDemo/>
+                <CalendarDemo refresh={refresh}/>
             </div>
 
-            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                <AddFriendForm onClose={() => setIsModalOpen(false)}/>
+            <Modal isOpen={isModalOpen} onClose={() => {
+                setIsModalOpen(false)
+                setRefresh(prev => !prev)
+            }}>
+                <AddFriendForm onClose={() => {
+                    setIsModalOpen(false)
+                    setRefresh(prev => !prev)
+                }}/>
             </Modal>
         </>
 

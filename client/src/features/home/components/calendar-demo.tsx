@@ -3,7 +3,11 @@ import Calendar from '../../../components/calendar/calendar.tsx'
 import {generateEvents} from '@/lib/mock-calendar-events.ts'
 import type {CalendarEvent, Mode} from "@/components/calendar/calendar-types.ts";
 
-export default function CalendarDemo() {
+interface CalendarDemoProps {
+    refresh: boolean;
+}
+
+export default function CalendarDemo({refresh}: CalendarDemoProps) {
     const [events, setEvents] = useState<CalendarEvent[] | undefined>(undefined)
     const [mode, setMode] = useState<Mode>('month')
     const [date, setDate] = useState<Date>(new Date())
@@ -12,7 +16,6 @@ export default function CalendarDemo() {
         const fetchEvents = async () => {
             try {
                 const fetchedEvents = await generateEvents();
-
                 setEvents(fetchedEvents);
             } catch (error) {
                 console.error("Failed to fetch calendar events:", error);
@@ -21,7 +24,7 @@ export default function CalendarDemo() {
         };
 
         fetchEvents();
-    }, [])
+    }, [refresh])
 
     if (events === undefined) {
         return <div>Loading calendar data...</div>;
