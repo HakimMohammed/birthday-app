@@ -19,6 +19,7 @@ export const AddFriendForm: React.FC<AddFriendFormProps> = ({onClose}) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
+        if (name === 'birthDate') return setFormData(prev => ({...prev, birthDate: new Date(value)}))
         setFormData((prev) => ({...prev, [name]: value}));
     };
 
@@ -38,8 +39,7 @@ export const AddFriendForm: React.FC<AddFriendFormProps> = ({onClose}) => {
             setFormData({firstName: '', lastName: '', birthDate: new Date()}); // Reset form
 
             // In a real application, you would close the dialog and refresh the event list here.
-            // onClose();
-
+            onClose();
         } catch (error) {
             setMessage('Failed to add friend. Please try again.');
             console.error('API Error:', error);
@@ -47,9 +47,6 @@ export const AddFriendForm: React.FC<AddFriendFormProps> = ({onClose}) => {
             setIsLoading(false);
         }
     };
-
-    // Get today's date in YYYY-MM-DD format for max attribute on birthday input
-    const today = new Date().toISOString().split('T')[0];
 
     return (
         <div className="p-6 bg-white rounded-xl shadow-2xl w-full max-w-md min-w-[500px]">
@@ -91,17 +88,16 @@ export const AddFriendForm: React.FC<AddFriendFormProps> = ({onClose}) => {
                 </div>
 
                 <div>
-                    <label htmlFor="birthday" className="block text-sm font-medium text-gray-700 flex items-center">
-                        <Cake className="w-4 h-4 mr-1 text-pink-500"/> Birthday
+                    <label htmlFor="birthDate" className="block text-sm font-medium text-gray-700 flex items-center">
+                        <Cake className="w-4 h-4 mr-1 text-pink-500"/> Birth Date
                     </label>
                     <input
                         type="date"
-                        id="birthday"
-                        name="birthday"
+                        id="birthDate"
+                        name="birthDate"
                         value={formData.birthDate.toISOString().split('T')[0]}
                         onChange={handleChange}
                         required
-                        max={today}
                         className="mt-1 w-full rounded-md border border-gray-300 p-2 focus:border-red-500 focus:ring-red-500"
                     />
                 </div>
